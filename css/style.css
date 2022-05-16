@@ -1,15 +1,15 @@
 @font-face {
-    font-family: "PT Sans-Narrow";
-    src: url("../fonts/pt-sans-narrow-v17-latin-regular.woff2") format("woff2"),
-         url("../fonts/pt-sans-narrow-v17-latin-regular.woff") format("woff");
+    font-family: "PT Sans Narrow";
+    src: url("../fonts/ptsansnarrow.woff2") format("woff2"),
+        url("../fonts/ptsansnarrow.woff") format("woff");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "PT Sans-Narrow";
-    src: url("../fonts/pt-sans-narrow-v17-latin-700.woff2") format("woff2"),
-         url("../fonts/pt-sans-narrow-v17-latin-700.woff") format("woff");
+    font-family: "PT Sans Narrow";
+    src: url("../fonts/ptsansnarrowbold.woff2") format("woff2"),
+        url("../fonts/ptsansnarrowbold.woff") format("woff");
     font-weight: 700;
     font-style: normal;
 }
@@ -17,36 +17,41 @@
 /* Variables */
 
 :root {
---basic-black: #000000;
---basic-extra-dark: #242424;
---basic-dark: #aba9a7;
---basic-neutral: #e5e5e5;
---basic-extra-light: #f8f5f2;
---basic-white: #ffffff;
+    --basic-black: #000000;
+    --basic-extra-dark: #242424;
+    --basic-dark: #aba9a7;
+    --basic-neutral: #e5e5e5;
+    --basic-extra-light: #f8f5f2;
+    --basic-white: #ffffff;
 
---special: #663d15;
+    --special: #663d15;
 }
 
 /* Global */
 
-body {
-min-width: 960px;
-margin: 0;
-padding: 0;
-font-family: "PT Sans Narrow", Arial, sans-serif;
-font-size: 14px;
-line-height: 24px;
-font-weight: 700;
-color: var(--basic-white);
-text-transform: uppercase;
-background-color: var(--basic-black);
-background-image: url("../img/Layer.jpg");
-background-position: top center;
-background-repeat: no-repeat;
+.page-body {
+    min-width: 960px;
+    margin: 0;
+    padding: 0;
+    font-family: "PT Sans Narrow", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+    color: var(--basic-white);
+    text-transform: uppercase;
+    background-color: var(--basic-black);
+    background-image: url("../img/Layer.jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    align-content: start;
 }
 
 a {
-   text-decoration: none;
+    text-decoration: none;
 }
 
 img {
@@ -54,20 +59,61 @@ img {
     height: auto;
 }
 
+/*Гриды*/
+
+.page {
+    height: 100%;
+}
+
+/*Шапка*/
+
+.main-header {
+    margin-bottom: 70px;
+}
+
+/*Навигация*/
+
 .main-navigation {
+    display: grid;
     font-size: 16px;
     line-height: 20px;
     color: var(--basic-white);
     background-color: transparent;
 }
 
-.main-navigation-wrapper {
+.container {
+    width: 940px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.main-header-logo {
+    order: 1;
+    justify-self: center;
+}
+
+.main-header-bar {
     background-color: var(--basic-black);
 }
 
+.main-navigation-wrapper {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    width: 940px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
 .site-navigation {
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
+
+.site-navigation-current a:not([href]) {
+    background-color: var(--basic-black);
+}
+
 
 .login-link {
     list-style: none;
@@ -90,7 +136,16 @@ img {
     background-color: var(--basic-extra-dark);
 }
 
+.features {
+    margin-bottom: 80px;
+}
+
 .features-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
 
@@ -103,7 +158,14 @@ img {
     line-height: 42px;
 }
 
+.feature-item p {
+    margin: 0 10px;
+}
+
 .index-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 35px;
     color: var(--basic-black);
     background-color: var(--basic-extra-light);
     background-image: url("../img/pattern-white.jpg");
@@ -161,12 +223,26 @@ img {
     border-color: var(--special);
 }
 
+/*Подвал*/
+
 .main-footer {
+    padding: 60px 0;
+    margin-top: 65px;
     color: var(--basic-white);
     background-color: var(--basic-extra-dark);
     background-image: url("../img/pattern-grey.jpg");
     background-position: 0 0;
     background-repeat: repeat;
+}
+
+.main-footer .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.footer-contacts {
+    margin: 0;
+    width: 320px;
 }
 
 .footer-contacts a {
@@ -180,6 +256,8 @@ img {
 }
 
 .footer-social {
+    width: 145px;
+    justify-self: center;
     text-align: center;
 }
 
@@ -206,13 +284,20 @@ img {
     background-color: var(--basic-white);
 }
 
+.footer-copyright {
+    max-width: 150px;
+    margin: 0;
+    justify-self: end;
+    
+}
+
 .modal {
     color: var(--basic-black);
     background-color: var(--basic-extra-light);
     background-image: url("../img/pattern-white.jpg");
     background-position: 0 0;
     background-repeat: repeat;
-    box-shadow: 0 30 50 rgba(0, 0, 0, 0,7);
+    box-shadow: 0 30 50 rgba(0, 0, 0, 0, 7);
 }
 
 .modal-login h2 {
